@@ -13,13 +13,20 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+
+      - uses: pnpm/action-setup@v4
+        name: Install pnpm
+        with:
+          version: 8
+          run_install: false
+
       - name: Use Node.js 20.5
         uses: actions/setup-node@v3
         with:
           node-version: 20.5
 
       - name: Install dependencies
-        run: pnpm
+        run: pnpm install
 
       - name: Build project
         run: pnpm run build
